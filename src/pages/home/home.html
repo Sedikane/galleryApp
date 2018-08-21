@@ -1,0 +1,49 @@
+<!--
+ Generated template for the HomePage page.
+ See http://ionicframework.com/docs/components/#navigation for more info on
+ Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>home</ion-title>
+  </ion-navbar>
+ </ion-header>
+ <ion-content padding>
+  <div *ngIf="hasIt === 0">
+    <button ion-button full (click)= "navigate('u')">Upload Files</button>
+    <button ion-button full (click)= "navigate('v')">View Gallery</button>
+  </div>
+  <ion-row *ngIf="hasIt === 1">
+    <ion-col><button ion-button block (click)="uploads('camera')">Pic</button></ion-col>
+    <ion-col><button ion-button block (click)="uploads('audio')">Audio</button></ion-col>
+    <ion-col><button ion-button block (click)="uploads('video')">Video</button></ion-col>
+    <button ion-button full (click)= "navigate('b')">Back to menu</button>
+  </ion-row>
+  <ion-row *ngIf="hasIt === 2">
+    <ion-col><button ion-button block (click)="viewUploads('p')">view Pictures</button></ion-col>
+    <ion-col><button ion-button block (click)="viewUploads('a')">view Audio</button></ion-col>
+    <ion-col><button ion-button block (click)="viewUploads('v')">Video</button></ion-col>
+    <button ion-button full (click)= "navigate('b')">Back to menu</button>
+  </ion-row>
+  <div *ngIf="moo === 1">
+    <img *ngFor="let imgUrl of images" src={{imgUrl}}>
+    <button ion-button full (click)= "navigate('b')">Back to menu</button>
+  </div>
+  <div *ngIf="moo === 3">
+      <video *ngFor="let video of videos" src={{video}} type="video/mp4" controls  width="320" height="240"></video>
+      <button ion-button full (click)= "navigate('b')">Back to menu</button>
+ 
+    </div>
+    <div *ngIf="moo === 4">
+      <!-- <video  type="audio/mp4" controls  width="320" height="240"></video> -->
+      <audio *ngFor="let audio of audios"  controls>
+ 
+        <source src={{audio}} type="audio/mpeg">
+        <source src={{audio}} type="audio/ogg">
+        <source src={{audio}} type="audio/wav">
+        Your browser does not support the audio tag.
+      </audio>
+      <button ion-button full (click)= "navigate('b')">Back to menu</button>
+ 
+    </div>
+ </ion-content>
